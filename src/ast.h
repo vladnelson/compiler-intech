@@ -1,6 +1,7 @@
 #ifndef AST_H
 #define AST_H
 #include "symbol.h"
+#include <stdbool.h>
 
 typedef enum {
   AST_VOID,
@@ -105,6 +106,7 @@ ast_t *ast_new_condition (ast_t *condition, ast_t *valid, ast_t *invalid);
 ast_t *ast_new_loop (ast_t *condition, ast_t *stmt);
 ast_t *ast_new_return (ast_t *expr);
 
+bool ast_is_binary_(ast_t * ast);
 // int ast_binary_priority (ast_t *ast);
 ast_list_t *ast_list_new_node (ast_t *elem);
 ast_list_t *ast_list_add (ast_list_t **list, ast_t *elem);
