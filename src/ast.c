@@ -152,6 +152,7 @@ char *ast_get_ret_type(ast_t *ast)
   return "";
 }
 
+<<<<<<< HEAD
 ast_list_t *ast_list_new_node(ast_t *elem)
 {
   ast_list_t *node = malloc(sizeof(ast_list_t));
@@ -210,6 +211,8 @@ int ast_binary_priority(ast_t *ast)
   }
 }
 
+=======
+>>>>>>> 4cb007e5859528c84bb86ba153c2638bf7bbcd1d
 char *ast_binary_to_string(ast_binary_e op)
 {
   switch (op)
@@ -383,8 +386,58 @@ void ast_print(ast_t *ast)
   printf("\n");
 }
 
+<<<<<<< HEAD
 void ast_print_binary_or_integer(ast_t *item)
 {
+=======
+ast_list_t *ast_list_new_node(ast_t *elem)
+{
+  ast_list_t *node = malloc(sizeof(ast_list_t));
+  node->elem = elem;
+  node->next = NULL;
+  return node;
+}
+
+ast_list_t *ast_list_add(ast_list_t **list, ast_t *elem)
+{
+  assert(elem != NULL);
+  assert(list != NULL);
+  while (*list)
+    list = &(*list)->next;
+
+  *list = ast_list_new_node(elem);
+  return *list;
+}
+
+int ast_binary_priority(ast_t *ast)
+{
+  if (ast == NULL)
+    return 0;
+  if (ast->type != AST_BINARY)
+    return 100;
+
+  switch (ast->binary.op)
+  {
+  case AST_BIN_OR:
+    return 10;
+  case AST_BIN_AND:
+    return 10;
+  case AST_BIN_GTE:
+    return 20;
+  case AST_BIN_GT:
+    return 20;
+  case AST_BIN_LTE:
+    return 20;
+
+  // ETCCCCCCC
+  default:
+    return 0;
+  }
+}
+
+void ast_print_binary_or_integer(ast_t *item)
+{
+>>>>>>> 4cb007e5859528c84bb86ba153c2638bf7bbcd1d
   if (item->type == AST_INTEGER)
   {
     printf(COLOR_BLUE "%ld " COLOR_DEFAULT, item->integer);

@@ -51,6 +51,14 @@ int main(int argc, char **argv)
   buffer_t buffer;
   buffer_t *pbuffer = &buffer;
   buf_init(pbuffer, input);
+  buf_skipblank(pbuffer);
+
+  //Vous pouvez ajouter toutes vos fonctions de test
+
+  // char *lexem = lexer_getalphanum_rollback(pbuffer);
+  // printf("Variable Trouvee : %s\n", lexem);
+
+  // printf("Nombre Trouvee  : %ld\n", lexer_getnumber(pbuffer));
 
   symbol_t *listesymbole = NULL;
 

@@ -79,7 +79,6 @@ char *lexer_getalphanum (buffer_t *buffer)
       par isalphanum(), alors
         continuer
       sinon s'arrêter
-
     créer une chaîne de caractères contenant les caractères qu'on
        vient de lire
     et retourner cette chaine

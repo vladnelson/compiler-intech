@@ -3,7 +3,8 @@
 #include "symbol.h"
 #include <stdbool.h>
 
-typedef enum {
+typedef enum
+{
   AST_VOID,
   AST_INTEGER,
   AST_BINARY,
@@ -19,7 +20,8 @@ typedef enum {
   AST_RETURN
 } ast_node_type_e;
 
-typedef enum {
+typedef enum
+{
   AST_BIN_PLUS,
   AST_BIN_MINUS,
   AST_BIN_MULT,
@@ -35,60 +37,73 @@ typedef enum {
   AST_BIN_DIFF
 } ast_binary_e;
 
-typedef struct ast_t {
+typedef struct ast_t
+{
   ast_node_type_e type;
   union {
     long integer;
-    struct {
+    struct
+    {
       char *name;
       int type;
     } var;
-    struct {
+    struct
+    {
       ast_binary_e op;
       struct ast_t *left;
       struct ast_t *right;
     } binary;
-    struct {
+    struct
+    {
       char op;
       struct ast_t *operand;
     } unary;
-    struct {
+    struct
+    {
       char *name;
       struct ast_list_t *args;
     } call;
-    struct {
+    struct
+    {
       char *name;
       int return_type;
       struct ast_list_t *params;
       struct ast_list_t *stmts;
     } function;
-    struct {
+    struct
+    {
       struct ast_list_t *stmts;
     } compound_stmt;
-    struct {
+    struct
+    {
       struct ast_t *lvalue;
       struct ast_t *rvalue;
     } assignment;
-    struct {
+    struct
+    {
       struct ast_t *lvalue;
       struct ast_t *rvalue;
     } declaration;
-    struct {
+    struct
+    {
       struct ast_t *condition;
       struct ast_t *valid;
       struct ast_t *invalid;
     } branch;
-    struct {
+    struct
+    {
       struct ast_t *condition;
       struct ast_t *stmt;
     } loop;
-    struct {
+    struct
+    {
       struct ast_t *expr;
     } ret;
   };
 } ast_t;
 
-typedef struct ast_list_t {
+typedef struct ast_list_t
+{
   struct ast_t *elem;
   struct ast_list_t *next;
 } ast_list_t;
